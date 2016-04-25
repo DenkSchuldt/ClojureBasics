@@ -12,18 +12,20 @@
 ```
 
 #### Basics
+Integers, Strings, Booleans, Characters, Decimals, Keywords, Ratios.
+
 ```clojure
-;; Addition:
 => (+ 1 2)
+   ;; 3
 
-;; Subtraction:
 => (- 3 4)
+   ;; -1
 
-;; Multplication:
 => (* 5 6)
+   ;; 30
 
-;; Division:
 => (/ 7 8)
+   ;; 7/8
 ```
 
 #### Collections
@@ -39,7 +41,7 @@ Useful functions: **first**, **rest** (first complement), **last**, **count**.
 ;; Lists:
 => '(1 "a" :foo-bar)
 => (conj '("a" 1 :foo-bar) 2)
-   ;; '(2 "a" 1 :foo-bar 2)
+   ;; '(2 "a" 1 :foo-bar)
 
 ;; Maps:
 => {:fisrt-name "Dexter", :last-name "Slim"}
@@ -62,4 +64,82 @@ Useful functions: **first**, **rest** (first complement), **last**, **count**.
    ;; {:first-name "Denny", :last-name "Slim"}
 => (dissoc {:first-name "Dexter", :last-name "Slim"} :first-name)
    ;; {:last-name "Slim"}
+
+;; Sets:
+=> #{1 2 3 4}
+=> (clojure.set/union #{1 2 3} #{3 4 5})
+   ;; #{1 2 3 4 5}
+=> (clojure.set/intersection #{1 2 3} #{3 4 5})
+   ;; #{3}
+=> (clojure.set/diference #{1 2 3} #{3 4 5})
+   ;; #{1 2}
+=> (contains? #{1 2 3 4} 4)
+   ;; true
+=> (get #{1 2 3 4} 4)
+   ;; 4
+=> (:red #{:yellow :blue :red :white}) ;; Keywords
+   ;; :red
+=> (set [1 2 3 4])
+   ;; #{1 4 3 2}
+=> (set {:a 1, :b 2})
+   ;; #{[:b 2] [:a 1]}
+=> (conj #{1 2 3} 4)
+   ;; #{1 4 3 2}
+=> (disj #{1 2 3} 1)
+   ;; 1#{3 2}
 ```
+
+#### Symbols & Binding
+```clojure
+
+;; Global var
+=> (def user "Dexter")
+   ;; #'user/user
+
+;; Temporary binding
+=> (let [first-name "Dexter" last-name "Slim"] [first-name last-name])
+   ;; ["Dexter" "Slim"]
+```
+
+#### Functions
+```clojure
+=> (defn not-using-parameters [] "Dexter") ;; "Dexter" -> default
+   ;; #'user/the-name-is
+
+=> (defn using-parameters [first-name last-name] {
+      :param1 first-name
+      :param2 last-name
+    })
+   ;; #'user/using-parameters
+
+=> (def using-anonymous-functions (fn [] (str "" 1234)))
+   ;; #'user/using-anonymous-functions
+
+=> (def shorter-anon-function #(str "" 1234))
+   ;; #'user/shorter-anon-function
+
+=> (def shorter-anon-function-with-params (#(str "Hello, I am " %1 %2 %3) "Dexter" " " "Slim"))
+   ;; #'user/shorter-anon-function-with-params
+```
+
+#### Namespaces
+```clojure
+=> (ns object.attribute)
+=> %ns%
+=> (def function-in-namespace "Function in namespace")
+   ;; #'object.attribute/function-in-namespace
+=> object.attribute/function-in-namespace
+   ;; "Function in namespace"
+```
+
+#### Libs
+```clojure
+=> (require 'clojure.set)
+=> (require '[object.attribute :as obj]) ;; obj/functions
+=> (ns objects
+    (:require [object.attribute :refer :all])) ;; Could cause naming conflicts
+
+```
+
+
+> # Code is data
