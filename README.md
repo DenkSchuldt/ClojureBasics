@@ -1,8 +1,19 @@
 # Clojure Basics :squirrel:
 
 
+
 ## Requirements:
 - **Leiningen**. Download it [here](http://leiningen.org/).
+
+
+## Index:
+- [Basics](#basics)
+- [Collections](#collections)
+- [Logic Operations](#logic)
+- [Symbols](#symbols)
+- [Functions](#functions)
+- [Namespaces](#namespaces)
+- [Libs](#libs)
 
 <br/>
 
@@ -10,8 +21,10 @@
 ;; Creating a new project:
 => lein new project-name
 ```
+<br/>
 
-#### Basics
+
+#### <a name="basics"></a>Basics
 Integers, Strings, Booleans, Characters, Decimals, Keywords, Ratios.
 
 ```clojure
@@ -28,7 +41,8 @@ Integers, Strings, Booleans, Characters, Decimals, Keywords, Ratios.
    ;; 7/8
 ```
 
-#### Collections
+
+#### <a name="collections"></a>Collections
 Useful functions: **first**, **rest** (first complement), **last**, **count**.
 ```clojure
 ;; Vectors:
@@ -37,11 +51,15 @@ Useful functions: **first**, **rest** (first complement), **last**, **count**.
    ;; "a"
 => (conj ["a" 1 :foo-bar] 2)
    ;; ["a" 1 :foo-bar 2]
+=> (empty [1 2 3 4])
+   ;; []
 
 ;; Lists:
 => '(1 "a" :foo-bar)
 => (conj '("a" 1 :foo-bar) 2)
    ;; '(2 "a" 1 :foo-bar)
+=> (empty '(1 2 3 4))
+   ;; ()
 
 ;; Maps:
 => {:fisrt-name "Dexter", :last-name "Slim"}
@@ -64,6 +82,8 @@ Useful functions: **first**, **rest** (first complement), **last**, **count**.
    ;; {:first-name "Denny", :last-name "Slim"}
 => (dissoc {:first-name "Dexter", :last-name "Slim"} :first-name)
    ;; {:last-name "Slim"}
+=> (empty {:first-name "Dexter"})
+   ;; {}
 
 ;; Sets:
 => #{1 2 3 4}
@@ -87,9 +107,37 @@ Useful functions: **first**, **rest** (first complement), **last**, **count**.
    ;; #{1 4 3 2}
 => (disj #{1 2 3} 1)
    ;; 1#{3 2}
+=> (empty #{1 2 3 4})
+   ;; #{}
 ```
 
-#### Symbols & Binding
+
+#### <a name="logic"></a>Login Operations:
+```clojure
+=> (true? false)
+   ;; false
+=> (nil? false)
+   ;; false
+=> (not true)
+   ;; false
+=> (not nil)
+   ;; true
+=> (not= true 4)
+   ;; true
+=> (= :first-name :first-name)
+   ;; true
+=> (= '(:first-name :last-name) [:first-name :last-name]) ;; Compares content
+   ;; true
+=> (empty? [])
+   ;; true
+=> (seq []) ;; empty?
+   ;; nil
+=> (not (seq []))
+   ;; true
+```
+
+
+#### <a name="symbols"></a>Symbols & Binding
 ```clojure
 
 ;; Global var
@@ -101,7 +149,8 @@ Useful functions: **first**, **rest** (first complement), **last**, **count**.
    ;; ["Dexter" "Slim"]
 ```
 
-#### Functions
+
+#### <a name="functions"></a>Functions
 ```clojure
 => (defn not-using-parameters [] "Dexter") ;; "Dexter" -> default
    ;; #'user/the-name-is
@@ -122,7 +171,8 @@ Useful functions: **first**, **rest** (first complement), **last**, **count**.
    ;; #'user/shorter-anon-function-with-params
 ```
 
-#### Namespaces
+
+#### <a name="Namespaces"></a>Namespaces
 ```clojure
 => (ns object.attribute)
 => %ns%
@@ -132,14 +182,16 @@ Useful functions: **first**, **rest** (first complement), **last**, **count**.
    ;; "Function in namespace"
 ```
 
-#### Libs
+
+#### <a name="libs"></a>Libs
 ```clojure
 => (require 'clojure.set)
 => (require '[object.attribute :as obj]) ;; obj/functions
 => (ns objects
     (:require [object.attribute :refer :all])) ;; Could cause naming conflicts
-
 ```
 
+
+<br/>
 
 > # Code is data
