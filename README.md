@@ -64,6 +64,8 @@ Useful functions: **first**, **rest** (first complement), **last**, **count**.
    ;; {:first-name "Denny", :last-name "Slim"}
 => (dissoc {:first-name "Dexter", :last-name "Slim"} :first-name)
    ;; {:last-name "Slim"}
+=> (zipmap [:vampire :monster :zombi] ["dracula" "frankie" "wilson"])
+   ;;{:zombi "wilson", :monster "frankie", :vampire "dracula"}
 
 ;; Sets:
 => #{1 2 3 4}
