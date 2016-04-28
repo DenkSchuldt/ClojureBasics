@@ -9,8 +9,8 @@
 ## Index:
 - [Basics](#basics)
 - [Collections](#collections)
-- [Logic Operations](#logic)
-- [Symbols](#symbols)
+- [Logic Operations](#logicoperations)
+- [Symbols & Binding](#symbolsandbinding)
 - [Functions](#functions)
 - [Namespaces](#namespaces)
 - [Libs](#libs)
@@ -82,6 +82,8 @@ Useful functions: **first**, **rest** (first complement), **last**, **count**.
    ;; {:first-name "Denny", :last-name "Slim"}
 => (dissoc {:first-name "Dexter", :last-name "Slim"} :first-name)
    ;; {:last-name "Slim"}
+=> (zipmap [:vampire :monster :zombi] ["dracula" "frankie" "wilson"])
+   ;; {:zombi "wilson", :monster "frankie", :vampire "dracula"}
 => (empty {:first-name "Dexter"})
    ;; {}
 
@@ -112,7 +114,7 @@ Useful functions: **first**, **rest** (first complement), **last**, **count**.
 ```
 
 
-#### <a name="logic"></a>Login Operations:
+#### <a name="logicoperations"></a>Logic Operations:
 ```clojure
 => (true? false)
    ;; false
@@ -137,7 +139,7 @@ Useful functions: **first**, **rest** (first complement), **last**, **count**.
 ```
 
 
-#### <a name="symbols"></a>Symbols & Binding
+#### <a name="symbolsandbinding"></a>Symbols & Binding
 ```clojure
 
 ;; Global var
